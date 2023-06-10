@@ -43,7 +43,7 @@ print("---")
 
 
 
-# eventually we may want to include the following flags: --max-age 48h --no-traverse
+# eventually we may want to include the following flags: --max-age 36h --no-traverse
 with open("osn_rclone.sh", 'w') as f: 
     f.write("#!/bin/bash\n\n")
     for i in range(0, len(source_dirs)):
