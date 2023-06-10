@@ -9,20 +9,48 @@ root_datapath = "/mfs/io/groups/lary/mintsData"
 basepaths = [
     os.path.join(root_datapath, "rawMqtt"),
     os.path.join(root_datapath, "raw"),
-    os.path.join(root_datapath, "rawMQTT")
+    os.path.join(root_datapath, "rawMQTT"),
 ]
 
-print(basepaths)
 
 df_ids = df_ids[df_ids["mac_address"] != "Not Yet Installed"]  # drop out missing mac addresses
 df_ids = df_ids[["mac_address", "name"]]  # keep only relevant columns
+df_ids["name"] =[name.replace(" ", "_") for name in df_ids["name"]]
 
 
 # generate list of folders to clone
-files_to_copy = []
+bucket_path = "OSN:ees230012-bucket01/AirQualityNetwork/data/raw"
+source_dirs = []
+dest_dirs = []
 
-for d in basepaths:
-    subdirs = [os.path.join(d, o) for o in os.listdir(d) if os.path.isdir(os.path.join(d,o))]
-    print(subdirs)
+data_mac_addresses = []
+
+print("---")
+
+for path in basepaths:
+    for mac_addr in os.listdir(path):
+        data_mac_addresses.append(mac_addr)
+        if os.path.isdir(os.path.join(path, mac_addr)):
+            valid_rows = df_ids[df_ids["mac_address"]==mac_addr]
+            if len(valid_rows) > 0:
+                source_dirs.append(os.path.join(path, mac_addr))
+                dest_dirs.append(os.path.join(bucket_path, valid_rows.iloc[0]["name"]))
+            else:
+                print(os.path.join(path, mac_addr))
 
 
+print("---")
+
+
+
+# eventually we may want to include the following flags: --max-age 48h --no-traverse
+with open("osn_rclone.sh", 'w') as f: 
+    f.write("#!/bin/bash\n\n")
+    for i in range(0, len(source_dirs)):
+        out_str = "rclone copy -P --max-age 1d --no-traverse " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        f.write(out_str)
+
+
+# now we want to add user permisions to the file so we can run it with nohup 
+cmd = "chmod +x osn_rclone.sh" 
+os.system(cmd)
