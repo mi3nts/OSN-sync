@@ -49,7 +49,8 @@ print("---")
 with open("osn_rclone.sh", 'w') as f: 
     f.write("#!/bin/bash\n\n")
     for i in range(0, len(source_dirs)):
-        out_str = "rclone copy -P --max-age 1d --no-traverse " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        # out_str = "rclone copy -P --max-age 1d --no-traverse " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        out_str = "rclone copy -P " + source_dirs[i] + " " + dest_dirs[i] + "\n"
         f.write(out_str)
 
 
