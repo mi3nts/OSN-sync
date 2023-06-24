@@ -10,6 +10,8 @@ basepaths = [
     os.path.join(root_datapath, "rawMqtt"),
     os.path.join(root_datapath, "raw"),
     os.path.join(root_datapath, "rawMQTT"),
+    "/mfs/io/groups/lary/mints-imd/raw"
+
 ]
 
 
