@@ -1,0 +1,25 @@
+project:
+  type: website
+  # preview:
+  #   port: 3101
+
+website:
+  title: "MINTS Data"
+  favicon: assets/thumbnail_MINTS.png
+  # search:
+  #   location: navbar
+  #   type: overlay
+  search: true
+  navbar:
+    background: primary
+    logo: assets/thumbnail_MINTS.png
+    right:
+      - text: "Home"
+        file: index.qmd
+format:
+  html:
+    theme: custom.scss
+
+
+reference-location: margin
+citation-location: margin
