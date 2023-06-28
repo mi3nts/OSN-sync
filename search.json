@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Accessing Data From the SharedAir Network",
+    "section": "",
+    "text": "This page provides and overview for the current ways to interact with live and historical data collected across the SharedAir network."
+  },
+  {
+    "objectID": "index.html#real-time-data",
+    "href": "index.html#real-time-data",
+    "title": "Accessing Data From the SharedAir Network",
+    "section": "Real-time Data",
+    "text": "Real-time Data\nFor an interactive map displaying the locations of each sensor together with the latest PM measurments, wind forcasts, radar data, and other relevant meteorological information, visit SharedAirDFW.\n\nCOMING SOON: Live Sensor Dashboards"
+  },
+  {
+    "objectID": "index.html#accessing-historical-data-on-osn",
+    "href": "index.html#accessing-historical-data-on-osn",
+    "title": "Accessing Data From the SharedAir Network",
+    "section": "Accessing historical data on OSN",
+    "text": "Accessing historical data on OSN\nData collected from each sensor are synced nightly to the Open Storage Network, a file storage and transfer service that hosts data in the popular [Simple Storage Service](https://en.wikipedia.org/wiki/Amazon_S3** format. Our bucket on OSN allows anonymous read access so that data from our network can be downloaded by anyone from anywhere. The following information will allow you to configure access to OSN (detailed below):\n\nEndpoint: https://ncsa.osn.xsede.org\nBucket: ees230012-bucket01\n\n\nBrowsing the data with Cyberduck:\nCyberduck provides a simple browser interface to interact with S3 data on Windows and Mac systems. To use cyberduck, first download the application. To set up cyberduck for accessing our bucket on OSN,\n\nCreate a new bookmark by clicking on the + icon in the bottom left of the application window.\nSelect FTP from the dropdown list at the top.\nSelect the option Anonymous Login\nSelect Amazon S3 in the dropdown window (replacing FTP). The option Anonymous Login may appear gray but should still be checked.\nFill in the rest of the fields as in the following image\n\n\nYou can now close the bookmark window and click on the new drive to connect to osn. This will allow you to browse and download all of the available data files.\n\n\n\nCommand line access via Rclone.\nFor a clean command line interface, we suggest using rclone. To configure rclone for OSN access we will need to create a configuration file. First, find the location of the configuration file by entering the command rclone config file. Then, edit the file to contain the following:\n[OSN]\ntype = s3\nprovider = Ceph\nendpoint = https://ncsa.osn.xsede.org\nno_check_bucket = true\nYou should now be able to sync files from the command line by supplying the key OSN with the bucket name. For example:\n\n\n\nAccessing OSN data from programming environments\nBecause OSN uses the S3 format, programming languages with support for reading data from Amazon style S3 buckets can access network data stored at OSN. The following options have already been tested:\n\nPython: OSN data can be accessed via the boto package\nJulia: OSN data can be accessed via AWS.jl and AWSS3.jl. For questions regarding Julia configuration for OSN access, contact John Waczak. A useful template is provided here\nR: (untested) OSN data should be accessible via the aws.s3 package."
+  }
+]

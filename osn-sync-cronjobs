@@ -1,2 +1,0 @@
-0 1 * * * cd /home/jxw190004/OSN-sync && python3 osn_sync.py && bash osn_rclone.sh
-
