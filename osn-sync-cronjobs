@@ -1,2 +1,3 @@
-0 1 * * * cd /home/jxw190004/OSN-sync && python3 osn_sync.py && bash osn_rclone.sh
+0 1 * * * cd /home/jxw190004/OSN-sync && python3 osn_sync.py && ./osn_rclone.sh && ./paths-to-csv.sh
+10 7 * * * cd /home/jxw190004/OSN-sync && python3 osn_sync.py && ./osn_rclone.sh && ./paths-to-csv.sh
 
