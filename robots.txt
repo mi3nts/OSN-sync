@@ -1,1 +1,1 @@
-Sitemap: https://mi3nts.github.io/OSN-sync/sitemap.xml
+Sitemap: https://github.com/mi3nts/OSN-sync/sitemap.xml
