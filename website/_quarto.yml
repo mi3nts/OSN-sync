@@ -4,7 +4,7 @@ project:
   #   port: 3101
 
 website:
-  title: "MINTS Data"
+  title: "MINTS-AI Data"
   favicon: assets/thumbnail_MINTS.png
   # search:
   #   location: navbar
