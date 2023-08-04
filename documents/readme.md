@@ -7,3 +7,4 @@
 - SoLo: https://www.overleaf.com/2672994299ywyvntxsbdvv
 - Wearable: https://www.overleaf.com/1138384375sjvxjtwwyyvg
 - https://mintswiki.trecis.cloud/mediawiki/index.php/Multi-scale_Integrated_Sensing_and_Simulation_(MINTS)
+- Sensor Tables(contains pretty prints of sensor outputs and units ): https://docs.google.com/spreadsheets/d/1rapNAuhtyaALUTRiUHc0UX4cqWQVMhRMtB_Jv4dSv20/edit?usp=sharing 
