@@ -2,7 +2,8 @@ import os
 import pandas as pd
 
 # download current id lookup table
-df_ids = pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv')
+df_ids = pd.concat([pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv'), pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv')])
+
 
 
 root_datapath = "/mfs/io/groups/lary/mintsData"
