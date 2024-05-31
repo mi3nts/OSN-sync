@@ -49,8 +49,8 @@ print("---")
 with open("osn_rclone.sh", 'w') as f: 
     f.write("#!/bin/bash\n\n")
     for i in range(0, len(source_dirs)):
-        out_str = "rclone copy --max-age 48h --no-traverse " + source_dirs[i] + " " + dest_dirs[i] + "\n"
-        #out_str = "rclone copy -P " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        # out_str = "rclone copy --max-age 1M --min-age 1d " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        out_str = "rclone copy --max-age 1M --min-age 1d --progress --config /home/jxw190004/.config/rclone/rclone.conf " + source_dirs[i] + " " + dest_dirs[i] + "\n"
         f.write(out_str)
 
 

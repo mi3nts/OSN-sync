@@ -5,4 +5,6 @@ To update the cronjob, first perform a `git pull` to fetch the latest version of
 $ crontab -u <user> osn-sync-cronjobs
 ```
 
+nohup pid: 972836
+
 
