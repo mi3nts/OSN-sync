@@ -2,7 +2,7 @@ import os
 import pandas as pd
 
 # download current id lookup table
-df_ids = pd.concat([pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv'), pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv')])
+df_ids = pd.concat([pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup.csv'), pd.read_csv('https://raw.githubusercontent.com/mi3nts/AirQualityAnalysisWorkflows/main/influxdb/nodered-docker/id_lookup_iq.csv')])
 
 
 
@@ -51,7 +51,7 @@ with open("osn_rclone.sh", 'w') as f:
     f.write("#!/bin/bash\n\n")
     for i in range(0, len(source_dirs)):
         # out_str = "rclone copy --max-age 1M --min-age 1d " + source_dirs[i] + " " + dest_dirs[i] + "\n"
-        out_str = "rclone copy --max-age 1M --min-age 1d --progress --config /home/jxw190004/.config/rclone/rclone.conf " + source_dirs[i] + " " + dest_dirs[i] + "\n"
+        out_str = "rclone copy --max-age 15d --min-age 1d --progress --config /home/jxw190004/.config/rclone/rclone.conf " + source_dirs[i] + " " + dest_dirs[i] + "\n"
         f.write(out_str)
 
 
